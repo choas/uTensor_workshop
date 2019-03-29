@@ -1,0 +1,35 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>tfjs XOR</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.8.0"> </script>
+</head>
+
+<body>
+
+  <div id="result">result
+    <br/>
+  </div>
+
+  <script>
+    console.log('start');
+
+    var model;
+    async function predict(v) {
+      var p = await model.predict(tf.tensor([v])).dataSync();
+      console.log(v, p[0]);
+      document.getElementById('result').innerHTML += v[0] + " " + v[1] + " = " + p + "<br/>";
+    }
+    async function run() {
+      model = await tf.loadModel('model.json');
+
+      [[0, 0], [0, 1], [1, 0], [1, 1]].forEach(v => {
+        predict(v);
+      })
+    }
+
+    run();
+  </script>
+
+</html>
