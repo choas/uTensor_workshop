@@ -1,0 +1,256 @@
+Willkommen
+
+Why Machine Learning on The Edge?
+https://towardsdatascience.com/why-machine-learning-on-the-edge-92fac32105e6
+
+
+Ziel Jupyter Notebooks installieren
+
+
+%%Alternative Colab??? https://github.com/choas/Machine_Learning_Models_In_Apps/blob/master/XOR/models/XOR_colab.ipynb
+
+
+Python 2.7 sollte bereits installiert sein.
+Ansonsten <>
+
+
+Virtualenv installieren und ein Verzeichnis anlegen
+Eine virtuelle Umgebung, in der Python läuft
+
+pip install virtualenv
+
+cd python
+virtualenv . -p <PYTHON2.7>
+source bin/activate
+python  - - version  $$$
+
+
+pip install "tensorflow>1.10,<1.13" keras jupyter
+
+oder mit der requirements.txt Datei: pip install -r requirement.txt 
+
+Keras + TensorFlow
+
+Welche Version passt mit welcher Version zusammen?
+https://docs.floydhub.com/guides/environments/
+
+Sunsetting tf.contrib
+https://github.com/tensorflow/community/blob/master/rfcs/20180907-contrib-sunset.md
+
+
+
+jupyter notebook
+
+Browser öffnet automatisch die Seite http://localhost:8888
+In das Verzeichnis Notebooks wechseln
+
+
+
+#Erstes Beispiel mit Keras
+
+01_XOR_Keras.ipynb öffnen
+
+mit Run Schritt für Schritt ausführen 
+
+
+keras 2.2.4
+tensorflow 1.12.0
+
+
+$$$
+
+Ergebnis
+
+[[0.04774003]
+ [0.9481221 ]
+ [0.9517887 ]
+ [0.0586575 ]]
+
+
+Imports
+
+TensorFlow und Keras Session
+
+sess=tf.Session()
+K.set_session(sess)
+
+Trainings- und Zieldaten
+training_data = np.array([[0,0], [0,1], [1,0], [1,1]])
+target_data   = np.array([  [0],   [1],   [1],   [0]])
+
+Keras Modell
+
+model = Sequential()
+model.add(Dense(4, input_dim=2, activation='sigmoid', name='input-layer'))
+model.add(Dense(1, activation='sigmoid', name='output-layer'))
+model.compile(loss='mean_squared_error', optimizer=SGD(lr=1), metrics=['accuracy'])
+
+input-layer mit hidden-layer
+Dense = kompakt
+4 Hidden-Nodes (Knoten)
+2 Eingangswerte für die Trainingsdaten
+Sigmoid Aktivierung: https://de.wikipedia.org/wiki/Sigmoidfunktion
+
+output-layer
+1 Ausgabe-Node fur die Zieldaten
+Sigmoid Aktivierung
+
+loss-Funktion
+mean_squared_error
+
+Optimier-Funktion
+Stochastic gradient descent: https://en.wikipedia.org/wiki/Stochastic_gradient_descent
+
+TensorBoard
+https://keras.io/callbacks/#tensorboard
+
+
+Training mit 2000 Epochs
+
+
+TensorBoard
+source bin/activate
+tensorboard --logdir notebooks/logs
+
+
+http://localhost:6006/
+
+Graph
+<Bild>
+
+
+Modell verbessern
+
+activation
+loss
+optimizer
+
+
+
+#XOR Modell mit TensorFlow
+
+<logo>
+https://github.com/tensorflow/tensorflow
+
+
+https://hackernoon.com/9-things-you-should-know-about-tensorflow-9cf0a05e4995
+
+
+02_XOR_TF Notebook
+
+%%original: https://aimatters.wordpress.com/2016/01/16/solving-xor-with-a-neural-network-in-tensorflow/
+
+Tensorflow Operator
+
+placeholder
+Variable
+sigmoid  !!!
+reduce_mean
+GradientDescentOptimizer
+
+
+TensorBoard
+<Bild>
+
+#mehr Modelle
+https://github.com/keras-team/keras/tree/master/examples
+
+
+#TensorFlow.js
+
+
+pip install tensorflowjs==0.8.0
+
+https://pypi.org/project/tensorflowjs/0.8.0/
+
+%% pip freeze | xargs pip uninstall -y
+
+
+python -m SimpleHTTPServer 8000
+http://localhost:8000/
+
+#MNIST
+
+https://github.com/tensorflow/tfjs-examples/tree/master/mnist-transfer-cnn
+
+
+03_MNIST_TF Notebook
+
+
+
+
+#uTensor
+https://blog.hackster.io/simple-neural-network-on-mcus-a7cbd3dc108c
+
+
+cd python
+source bin/activate
+
+pip install mbed-cli==1.9.1 utensor_cgen
+
+pip install -U protobuf
+%% https://github.com/tensorflow/models/issues/3995
+
+
+cd ../code
+
+mbed new MNIST
+
+cd MNIST
+
+mbed add https://github.com/uTensor/uTensor
+
+utensor-cli convert ../../python/notebooks/models/deep_mlp.pb --output-nodes=y_pred
+
+
+%%https://gist.githubusercontent.com/neil-tan/4a41505f5c06f079e36b159137ad1bdd/raw/84cd6ff5078d3b34797ffa4003aaae49ab895c26/main.cpp
+
+%%wget https://gist.github.com/neil-tan/0e032be578181ec0e3d9a47e1e24d011/raw/888d098683318d030b3c4f6f4b375a64e7ad0017/input_data.h
+
+
+https://os.mbed.com/platforms/ST-Nucleo-F411RE/
+
+
+mbed compile -m nucleo_f411re -t GCC_ARM --profile=uTensor/build_profile/release.json
+
+
+mbed-os/platform/mbed_rtc_time.h
+delete #if !defined(__GNUC__) || defined(__CC_ARM) || defined(__clang__)
+und #endif
+
+
+cp ./BUILD/NUCLEO_F411RE/GCC_ARM-RELEASE/MNIST.bin /Volumes/
+
+screen /dev/cu.usbmodem14603 115200
+
+Reset Board
+
+control AK
+
+
+
+#mbed XOR
+
+mbed new XOR
+
+mbed add https://github.com/uTensor/uTensor
+
+utensor-cli convert ../../python/notebooks/models/xor_tf.pb --output-nodes=layer3/Sigmoid
+
+unsupported op type in uTensor: Sigmoid
+
+
+
+04_XOR_TF_relu Notebook
+
+
+utensor-cli convert ../../python/notebooks/models/xor_relu.pb --output-nodes=add_1
+
+
+models/*
+main.cpp
+
+
+mbed compile -m nucleo_f411re -t GCC_ARM --profile=uTensor/build_profile/release.json
+
+
