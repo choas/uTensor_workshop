@@ -4,3 +4,6 @@ BUILD/
 mbed_app.json
 mbed_settings.py
 mbed_settings.pyc
+uTensor.lib
+uTensor/
+mbed-os
