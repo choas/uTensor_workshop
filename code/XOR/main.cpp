@@ -10,8 +10,8 @@ int main(void) {
 
   Context ctx;  //creating the context class, the stage where inferences take place 
   //wrapping the input data in a tensor class
-
-  const float input_data [ 2 ] = { 0.0, 1.0 };
+  
+  const float input_data [ 2 ] = { 1.0, 0.0 };
 
   Tensor* input_x = new WrappedRamTensor<float>({1, 2}, (float*) input_data);
 
@@ -19,8 +19,11 @@ int main(void) {
   S_TENSOR pred_tensor = ctx.get("add_1:0");  // getting a reference to the output tensor
   ctx.eval(); //trigger the inference
 
-  float pred_label = *(pred_tensor->read<float>(0, 1));  //getting the result back
-  printf("Predicted label: %f\r\n", pred_label);
+  float pred_label2 = *(pred_tensor->read<float>(0, 0));  //getting the result back
+  float pred_label3 = *(pred_tensor->read<float>(1, 0));  //getting the result back
+
+  int on_off = (pred_label3 < 0) ? 0 : 1;
+  printf("Predicted label2+3: %f %f %d\r\n", pred_label2, pred_label3, on_off);
 
   return 0;
 }

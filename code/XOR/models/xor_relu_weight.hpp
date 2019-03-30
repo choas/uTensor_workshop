@@ -8,7 +8,7 @@ const int inline_MatMul_eightbit_Placeholder__port__0_reshape_dims_0 [ 1 ] = {  
 const int inline_MatMul_eightbit_Placeholder__port__0_reduction_dims_0 [ 1 ] = {  0,  };
 #include <stdint.h>
 
-const float inline_Variable_0 [ 20 ] = {  -1.779113,  0.014425228,  2.1459432,  -0.079968356,  -1.268849,  0.4233583,  -0.16075294,  -1.9612513,  1.0842161,  0.81448466,  -1.7790484,  0.038112532,  2.494147,  0.023867516,  -1.268851,  -0.1663366,  -0.15246516,  1.9612117,  -0.45581585,  -0.2594202,  };
+const float inline_Variable_0 [ 20 ] = {  1.2979158,  -0.10008734,  -2.458088,  0.04307403,  2.4584837,  0.057300486,  0.015427831,  -0.11499055,  0.029739562,  -1.1878587,  1.2978791,  -0.040049396,  2.4580836,  0.013938822,  -2.4586282,  0.14373153,  -0.045620494,  0.024762116,  -0.046494137,  -1.1878308,  };
 #include <stdint.h>
 
 const int inline_MatMul_eightbit_Variable__port__0_reshape_dims_0 [ 1 ] = {  -1,  };
@@ -17,7 +17,7 @@ const int inline_MatMul_eightbit_Variable__port__0_reshape_dims_0 [ 1 ] = {  -1,
 const int inline_MatMul_eightbit_Variable__port__0_reduction_dims_0 [ 1 ] = {  0,  };
 #include <stdint.h>
 
-const float inline_Variable_1_0 [ 10 ] = {  1.7791137,  -0.17571531,  -2.1460483,  -0.13133042,  1.2688822,  0.21178003,  0.1607369,  5.694488e-06,  0.6379674,  0.6444721,  };
+const float inline_Variable_1_0 [ 10 ] = {  -1.2978952,  0.60823494,  -6.496146e-05,  -0.10388129,  -0.00012764256,  -1.19964625e-08,  0.5450806,  -0.026890675,  -0.08001271,  1.1879171,  };
 #include <stdint.h>
 
 const int inline_add_eightbit_Variable_1__port__0_reshape_dims_0 [ 1 ] = {  -1,  };
@@ -26,7 +26,7 @@ const int inline_add_eightbit_Variable_1__port__0_reshape_dims_0 [ 1 ] = {  -1, 
 const int inline_add_eightbit_Variable_1__port__0_reduction_dims_0 [ 1 ] = {  0,  };
 #include <stdint.h>
 
-const float inline_Variable_2_0 [ 20 ] = {  2.134509,  -2.2068267,  -0.10720505,  -0.08867391,  2.6205146,  -2.905687,  -0.015934236,  -0.013375406,  1.5346963,  -1.5617563,  -0.4028301,  0.3047896,  0.08289706,  -0.22134615,  -1.9139987,  1.989451,  -0.9781099,  0.90772635,  -0.78939855,  0.70346653,  };
+const float inline_Variable_2_0 [ 20 ] = {  1.5890677,  -1.5712352,  0.32697612,  -0.52235126,  -2.4336922,  2.4675722,  -0.04376048,  -0.055695057,  -2.4098685,  2.4934258,  -0.23014432,  -0.106933765,  0.40485802,  -0.3563779,  0.06948651,  0.0595569,  -0.035241153,  -0.030667994,  1.5052203,  -1.3964539,  };
 #include <stdint.h>
 
 const int inline_MatMul_1_eightbit_Variable_2__port__0_reshape_dims_0 [ 1 ] = {  -1,  };
@@ -35,7 +35,7 @@ const int inline_MatMul_1_eightbit_Variable_2__port__0_reshape_dims_0 [ 1 ] = { 
 const int inline_MatMul_1_eightbit_Variable_2__port__0_reduction_dims_0 [ 1 ] = {  0,  };
 #include <stdint.h>
 
-const float inline_Variable_3_0 [ 2 ] = {  -0.6859275,  0.796309,  };
+const float inline_Variable_3_0 [ 2 ] = {  1.5728669,  -1.460082,  };
 #include <stdint.h>
 
 const int inline_add_1_eightbit_Variable_3__port__0_reshape_dims_0 [ 1 ] = {  -1,  };
