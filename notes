@@ -48,6 +48,10 @@ In das Verzeichnis Notebooks wechseln
 
 #Erstes Beispiel mit Keras
 
+https://keras.io/
+
+%%Supervised / unsupervised
+
 01_XOR_Keras.ipynb öffnen
 
 mit Run Schritt für Schritt ausführen 
@@ -90,6 +94,9 @@ Dense = kompakt
 4 Hidden-Nodes (Knoten)
 2 Eingangswerte für die Trainingsdaten
 Sigmoid Aktivierung: https://de.wikipedia.org/wiki/Sigmoidfunktion
+https://en.wikipedia.org/wiki/File:Logistic-curve.svg
+https://towardsdatascience.com/activation-functions-neural-networks-1cbd9f8d91d6
+
 
 output-layer
 1 Ausgabe-Node fur die Zieldaten
@@ -100,6 +107,7 @@ mean_squared_error
 
 Optimier-Funktion
 Stochastic gradient descent: https://en.wikipedia.org/wiki/Stochastic_gradient_descent
+https://martin-thoma.com/tf-xor-tutorial/
 
 TensorBoard
 https://keras.io/callbacks/#tensorboard
@@ -154,10 +162,15 @@ TensorBoard
 
 #mehr Modelle
 https://github.com/keras-team/keras/tree/master/examples
+https://github.com/tensorflow/models/tree/master/research
 
 
 #TensorFlow.js
 
+https://www.tensorflow.org/js/
+https://github.com/tensorflow/tfjs-converter
+
+https://medium.com/tensorflow/train-on-google-colab-and-run-on-the-browser-a-case-study-8a45f9b1474e
 
 pip install tensorflowjs==0.8.0
 
@@ -166,8 +179,20 @@ https://pypi.org/project/tensorflowjs/0.8.0/
 %% pip freeze | xargs pip uninstall -y
 
 
+https://www.jsdelivr.com/package/npm/@tensorflow/tfjs
+
+
+
 python -m SimpleHTTPServer 8000
 http://localhost:8000/
+
+
+https://github.com/tensorflow/tfjs-examples
+
+
+#Save Modelle
+https://www.tensorflow.org/api_docs/python/tf/graph_util/convert_variables_to_constants
+
 
 #MNIST
 
@@ -176,15 +201,37 @@ https://github.com/tensorflow/tfjs-examples/tree/master/mnist-transfer-cnn
 
 03_MNIST_TF Notebook
 
+https://raw.githubusercontent.com/dmlc/web-data/master/mxnet/image/mlp_mnist.png
 
-
+%% https://medium.com/@ageitgey/machine-learning-is-fun-part-3-deep-learning-and-convolutional-neural-networks-f40359318721
 
 #uTensor
 https://blog.hackster.io/simple-neural-network-on-mcus-a7cbd3dc108c
 
+https://raw.githubusercontent.com/uTensor/uTensor/develop/docs/img/uTensorFlow.jpg
+
+
+??? Cloud9
+%% https://github.com/uTensor/cloud9-installer
+
 
 cd python
 source bin/activate
+
+
+mbed
+https://github.com/ARMmbed/mbed-os
+https://os.mbed.com/docs/mbed-os/v5.12/introduction/index.html
+
+GCC-arm cross-compiler:
+brew install https://raw.githubusercontent.com/osx-cross/homebrew-arm/0a6179693c15d8573360c94cee8a60bdf142f7b4/arm-gcc-bin.rb
+
+
+brew install mercurial git
+
+
+
+
 
 pip install mbed-cli==1.9.1 utensor_cgen
 
@@ -218,6 +265,7 @@ mbed-os/platform/mbed_rtc_time.h
 delete #if !defined(__GNUC__) || defined(__CC_ARM) || defined(__clang__)
 und #endif
 
+%% https://github.com/ARMmbed/mbed-os/issues/6988
 
 cp ./BUILD/NUCLEO_F411RE/GCC_ARM-RELEASE/MNIST.bin /Volumes/
 
@@ -247,10 +295,19 @@ unsupported op type in uTensor: Sigmoid
 utensor-cli convert ../../python/notebooks/models/xor_relu.pb --output-nodes=add_1
 
 
+Softmax
+https://www.tensorflow.org/api_docs/python/tf/nn/softmax
+https://de.wikipedia.org/wiki/Softmax-Funktion
+
+
 models/*
 main.cpp
 
 
 mbed compile -m nucleo_f411re -t GCC_ARM --profile=uTensor/build_profile/release.json
 
+#weitere Beispiele
 
+https://github.com/uTensor/ADL_demo
+https://github.com/uTensor/utensor-cmsis-example
+https://github.com/uTensor/utensor-mnist-demo
