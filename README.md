@@ -259,9 +259,18 @@ Softmax:
 - models/*
 - main.cpp
 
+### compile
+
 ```sh
 mbed compile -m nucleo_f411re -t GCC_ARM --profile=uTensor/build_profile/release.json
 ```
+
+### Pins
+
+![Pins](https://os.mbed.com/media/uploads/bcostm/nucleo_f411re_2017_11_14_ard_right.png)
+
+- [DigitalIn](https://os.mbed.com/docs/mbed-os/v5.11/apis/digitalin.html)
+- [DigitalOut (LED)](https://os.mbed.com/docs/mbed-os/v5.11/apis/digitalout.html)
 
 ### weitere uTensor Beispiele
 
