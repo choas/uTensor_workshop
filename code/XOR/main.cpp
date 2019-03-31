@@ -14,14 +14,19 @@ int main(void) {
 
   a.mode(PullUp); 
   b.mode(PullUp); 
-
   
   // while(1) {
 
     Context ctx;  //creating the context class, the stage where inferences take place 
-    //wrapping the input data in a tensor class
 
-    const float input_data [ 2 ] = { a.read() == 1 ? 1.0 : 0.0, b.read() == 1 ? 1.0 : 0.0 };
+    float v1 = a.read() == 1 ? 1.0 : 0.0;
+    float v2 = b.read() == 1 ? 1.0 : 0.0;
+
+    v1 = 1.0;
+    v2 = 0.0;
+
+    //wrapping the input data in a tensor class
+    const float input_data [ 2 ] = { v1, v2 };
 
     Tensor* input_x = new WrappedRamTensor<float>({1, 2}, (float*) input_data);
 
@@ -34,7 +39,7 @@ int main(void) {
     printf("predicted: %d %d %f %d\r\n", a.read(), b.read(), pred, on_off);
     led = on_off;
 
-    // wait(1.0);
+    wait(0.1);
   // }
 
   return 0;
