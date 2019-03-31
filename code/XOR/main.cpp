@@ -5,23 +5,37 @@
 
 Serial pc(USBTX, USBRX, 115200);  //baudrate := 115200
 
+DigitalIn a(D2);
+DigitalIn b(D3);
+DigitalOut led(LED1);
+
 int main(void) {
   printf("XOR uTensor cli example (device)\n");
 
-  Context ctx;  //creating the context class, the stage where inferences take place 
-  //wrapping the input data in a tensor class
+  a.mode(PullUp); 
+  b.mode(PullUp); 
+
   
-  const float input_data [ 2 ] = { 1.0, 0.0 };
+  // while(1) {
 
-  Tensor* input_x = new WrappedRamTensor<float>({1, 2}, (float*) input_data);
+    Context ctx;  //creating the context class, the stage where inferences take place 
+    //wrapping the input data in a tensor class
 
-  get_xor_relu_ctx(ctx, input_x);  // pass the tensor to the context
-  S_TENSOR pred_tensor = ctx.get("add_1:0");  // getting a reference to the output tensor
-  ctx.eval(); //trigger the inference
+    const float input_data [ 2 ] = { a.read() == 1 ? 1.0 : 0.0, b.read() == 1 ? 1.0 : 0.0 };
 
-  float pred = *(pred_tensor->read<float>(1, 0));  //getting the result back
-  int on_off = (pred < 0) ? 0 : 1;
-  printf("predicted: %f %d\r\n", pred, on_off);
+    Tensor* input_x = new WrappedRamTensor<float>({1, 2}, (float*) input_data);
+
+    get_xor_relu_ctx(ctx, input_x);  // pass the tensor to the context
+    S_TENSOR pred_tensor = ctx.get("add_1:0");  // getting a reference to the output tensor
+    ctx.eval(); //trigger the inference
+
+    float pred = *(pred_tensor->read<float>(1, 0));  //getting the result back
+    int on_off = (pred < 0) ? 0 : 1;
+    printf("predicted: %d %d %f %d\r\n", a.read(), b.read(), pred, on_off);
+    led = on_off;
+
+    // wait(1.0);
+  // }
 
   return 0;
 }
