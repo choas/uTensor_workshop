@@ -19,11 +19,9 @@ int main(void) {
   S_TENSOR pred_tensor = ctx.get("add_1:0");  // getting a reference to the output tensor
   ctx.eval(); //trigger the inference
 
-  float pred_label2 = *(pred_tensor->read<float>(0, 0));  //getting the result back
-  float pred_label3 = *(pred_tensor->read<float>(1, 0));  //getting the result back
-
-  int on_off = (pred_label3 < 0) ? 0 : 1;
-  printf("Predicted label2+3: %f %f %d\r\n", pred_label2, pred_label3, on_off);
+  float pred = *(pred_tensor->read<float>(1, 0));  //getting the result back
+  int on_off = (pred < 0) ? 0 : 1;
+  printf("predicted: %f %d\r\n", pred, on_off);
 
   return 0;
 }
