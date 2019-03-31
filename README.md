@@ -54,129 +54,64 @@ Der (Default) Browser öffnet automatisch die Seite http://localhost:8888
 
 Was ist supervised und unsupervised learning?
 
-[01_XOR_Keras.ipynb](http://localhost:8888/notebooks/01_XOR_Keras.ipynb) öffnen
+[01_XOR_Keras.ipynb](http://localhost:8888/notebooks/01_XOR_Keras.ipynb) öffnen und mit _Run_ das Notebook Schritt für Schritt ausführen.
 
-mit Run Schritt für Schritt ausführen 
+### TensorBoard
 
-
-keras 2.2.4
-tensorflow 1.12.0
-
-
-$$$
-
-Ergebnis
-
-[[0.04774003]
- [0.9481221 ]
- [0.9517887 ]
- [0.0586575 ]]
-
-
-Imports
-
-TensorFlow und Keras Session
-
-sess=tf.Session()
-K.set_session(sess)
-
-Trainings- und Zieldaten
-training_data = np.array([[0,0], [0,1], [1,0], [1,1]])
-target_data   = np.array([  [0],   [1],   [1],   [0]])
-
-Keras Modell
-
-model = Sequential()
-model.add(Dense(4, input_dim=2, activation='sigmoid', name='input-layer'))
-model.add(Dense(1, activation='sigmoid', name='output-layer'))
-model.compile(loss='mean_squared_error', optimizer=SGD(lr=1), metrics=['accuracy'])
-
-input-layer mit hidden-layer
-Dense = kompakt
-4 Hidden-Nodes (Knoten)
-2 Eingangswerte für die Trainingsdaten
-Sigmoid Aktivierung: https://de.wikipedia.org/wiki/Sigmoidfunktion
-https://en.wikipedia.org/wiki/File:Logistic-curve.svg
-https://towardsdatascience.com/activation-functions-neural-networks-1cbd9f8d91d6
-
-
-output-layer
-1 Ausgabe-Node fur die Zieldaten
-Sigmoid Aktivierung
-
-loss-Funktion
-mean_squared_error
-
-Optimier-Funktion
-Stochastic gradient descent: https://en.wikipedia.org/wiki/Stochastic_gradient_descent
-https://martin-thoma.com/tf-xor-tutorial/
-
-TensorBoard
-https://keras.io/callbacks/#tensorboard
-
-
-Training mit 2000 Epochs
-
-
-TensorBoard
+```sh
+cd python
 source bin/activate
 tensorboard --logdir notebooks/logs
+```
 
+Im Browser die Seite http://localhost:6006/ öffnen.
 
-http://localhost:6006/
+![TensorBoard](./images/tensorboard.png)
 
-Graph
-<Bild>
+### Modell verbessern
 
+Wie können wir das Modell verbessern?
 
-Modell verbessern
+- activation: ReLu im ersten Layer
+- loss: binary_crossentropy
+- optimizer: Adam
+- layer: zwischen 1. und 2. layer
 
-activation
-loss
-optimizer
+## Teil 2 - XOR Modell mit [TensorFlow](https://www.tensorflow.org/)
 
+[9 Things You Should Know About TensorFlo](https://hackernoon.com/9-things-you-should-know-about-tensorflow-9cf0a05e4995)
 
+[02_XOR_TF.ipynb](http://localhost:8888/notebooks/02_XOR_TF.ipynb) öffnen und mit _Run_ das Notebook Schritt für Schritt ausführen (Original: [](https://aimatters.wordpress.com/2016/01/16/solving-xor-with-a-neural-network-in-tensorflow/))
 
-#XOR Modell mit TensorFlow
+Tensorflow Operator:
 
-<logo>
-https://github.com/tensorflow/tensorflow
-
-
-https://hackernoon.com/9-things-you-should-know-about-tensorflow-9cf0a05e4995
-
-
-02_XOR_TF Notebook
-
-%%original: https://aimatters.wordpress.com/2016/01/16/solving-xor-with-a-neural-network-in-tensorflow/
-
-Tensorflow Operator
-
-placeholder
-Variable
-sigmoid  !!!
-reduce_mean
-GradientDescentOptimizer
+- placeholder
+- Variable
+- sigmoid  ⚠️
+- reduce_mean
+- GradientDescentOptimizer
 
 
 TensorBoard
 <Bild>
 
-#mehr Modelle
+### mehr Modelle
+
 https://github.com/keras-team/keras/tree/master/examples
 https://github.com/tensorflow/models/tree/master/research
 
 
-#TensorFlow.js
+
+## Teil 3 - TensorFlow.js
 
 https://www.tensorflow.org/js/
 https://github.com/tensorflow/tfjs-converter
 
 https://medium.com/tensorflow/train-on-google-colab-and-run-on-the-browser-a-case-study-8a45f9b1474e
 
-pip install tensorflowjs==0.8.0
 
-https://pypi.org/project/tensorflowjs/0.8.0/
+
+[TensorFlow.js Version 0.8.0](https://pypi.org/project/tensorflowjs/0.8.0/)
 
 %% pip freeze | xargs pip uninstall -y
 
@@ -184,19 +119,23 @@ https://pypi.org/project/tensorflowjs/0.8.0/
 https://www.jsdelivr.com/package/npm/@tensorflow/tfjs
 
 
-
+```sh
+cd python/notebooks/web/
 python -m SimpleHTTPServer 8000
-http://localhost:8000/
+```
+
+Im Browser öffnen: [http://localhost:8000/](http://localhost:8000/)
 
 
 https://github.com/tensorflow/tfjs-examples
 
 
-#Save Modelle
+### Save Modelle
+
 https://www.tensorflow.org/api_docs/python/tf/graph_util/convert_variables_to_constants
 
 
-# MNIST
+### MNIST
 
 ![Fully connected 2 layer NN](https://raw.githubusercontent.com/dmlc/web-data/master/mxnet/image/mlp_mnist.png)
 
