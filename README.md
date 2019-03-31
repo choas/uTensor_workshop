@@ -9,7 +9,6 @@ git clone https://github.com/choas/uTensor_workshop.git
 cd uTensor_workshop
 ```
 
-
 ### Ziel Jupyter Notebooks installieren
 
 __Python 2.7__ sollte bereits installiert sein, ansonsten: [Download Python 2.7.16](https://www.python.org/downloads/release/python-2716/)
@@ -35,7 +34,7 @@ TensorFlow, Keras, Jupyter und TensorFlow.js installieren:
 pip install -r requirement.txt
 ```
 
-#### Warum die TensorFlow und Keras Versionen?
+#### TensorFlow und Keras Versionen
 
 1. Keras + TensorFlow = 🤬
 2. [Welche Version passt mit welcher Version zusammen?](https://docs.floydhub.com/guides/environments/)
@@ -48,7 +47,7 @@ cd notebooks
 jupyter notebook
 ```
 
-Der (Default) Browser öffnet automatisch die Seite http://localhost:8888
+Der (Default) Browser öffnet automatisch die Seite [http://localhost:8888](http://localhost:8888)
 
 ## Erstes Beispiel mit [Keras](https://keras.io/)
 
@@ -64,7 +63,7 @@ source bin/activate
 tensorboard --logdir notebooks/logs
 ```
 
-Im Browser die Seite http://localhost:6006/ öffnen.
+Im Browser die Seite [http://localhost:6006/](http://localhost:6006/) öffnen.
 
 ![TensorBoard Keras](./images/tensorboard_keras.png)
 
@@ -95,8 +94,9 @@ Tensorflow Operator:
 
 ### mehr Modelle
 
-https://github.com/keras-team/keras/tree/master/examples
-https://github.com/tensorflow/models/tree/master/research
+- [Keras examples](https://github.com/keras-team/keras/tree/master/examples
+)
+- [TensorFlow models](https://github.com/tensorflow/models/tree/master/research)
 
 ## Teil 3 - [TensorFlow.js](https://www.tensorflow.org/js/)
 
@@ -145,6 +145,7 @@ more: [Machine Learning is Fun! Part 3: Deep Learning and Convolutional Neural N
 ### mbed
 
 ![mbed OS diagram](https://s3-us-west-2.amazonaws.com/mbed-os-docs-images/Mbed_OS_diagram_for_intro.png)
+
 - [An introduction to Arm Mbed OS 5](https://os.mbed.com/docs/mbed-os/v5.12/introduction/index.html)
 - [Github](https://github.com/ARMmbed/mbed-os)
 
@@ -249,6 +250,7 @@ utensor-cli convert ../../python/notebooks/models/xor_relu.pb --output-nodes=add
 ```
 
 Softmax:
+
 - [TensorFlow Softmax](https://www.tensorflow.org/api_docs/python/tf/nn/softmax)
 - [Wikipedia](https://de.wikipedia.org/wiki/Softmax-Funktion)
 
@@ -263,6 +265,8 @@ mbed compile -m nucleo_f411re -t GCC_ARM --profile=uTensor/build_profile/release
 
 ### weitere uTensor Beispiele
 
-https://github.com/uTensor/ADL_demo
-https://github.com/uTensor/utensor-cmsis-example
-https://github.com/uTensor/utensor-mnist-demo
+- [ADL demo](https://github.com/uTensor/ADL_demo)
+- [CMSIS example](https://github.com/uTensor/utensor-cmsis-example)
+- [MNIST Demo DISCO_F413ZH](https://github.com/uTensor/utensor-mnist-demo)
+
+![MNIST DISCO_F413ZH](https://camo.githubusercontent.com/bc9f7d13cc50422a776a75f3d443e80e35de6ffb/68747470733a2f2f696d672e796f75747562652e636f6d2f76692f46686243416430734f31632f302e6a7067)
