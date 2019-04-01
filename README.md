@@ -22,7 +22,7 @@ pip install virtualenv
 ```sh
 cd python
 virtualenv . -p <PYTHON2.7>  # oder nur virtualenv .
-source bin/activate
+source bin/activate # Windows: env\Scripts\activate.bat
 python --version
 ```
 
