@@ -115,6 +115,10 @@ cd python/notebooks/web/
 python -m SimpleHTTPServer 8000
 ```
 
+```sh
+python3 -m http.server
+```
+
 Im Browser öffnen: [http://localhost:8000/](http://localhost:8000/)
 
 ### Save Modelle
@@ -178,11 +182,7 @@ brew install mercurial git
 pip install mbed-cli==1.9.1 utensor_cgen
 ```
 
-[tensorflow/models/issues/3995](https://github.com/tensorflow/models/issues/3995):
-
-```sh
-pip install -U protobuf
-```
+Windows: https://launchpad.net/gcc-arm-embedded/+download
 
 ### MNIST Beispiel
 
@@ -191,6 +191,12 @@ cd ../code
 mbed new MNIST
 cd MNIST
 mbed add https://github.com/uTensor/uTensor
+```
+
+[tensorflow/models/issues/3995](https://github.com/tensorflow/models/issues/3995):
+
+```sh
+pip install -U protobuf
 ```
 
 #### uTensor convert
