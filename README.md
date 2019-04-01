@@ -21,7 +21,7 @@ pip install virtualenv
 
 ```sh
 cd python
-virtualenv . -p <PYTHON2.7>
+virtualenv . -p <PYTHON2.7>  # oder nur virtualenv .
 source bin/activate
 python --version
 ```
