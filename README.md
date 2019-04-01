@@ -30,12 +30,6 @@ python --version
 
 TensorFlow, Keras, Jupyter und TensorFlow.js installieren:
 
-Windows:
-```sh
-pip install --upgrade https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-1.12.0-py2-none-any.whl
-```
-
-
 ```sh
 pip install -r requirement.txt
 ```
